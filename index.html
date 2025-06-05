@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বহুভাষিক কোর্স প্ল্যাটফর্ম</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS CSS CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- Custom Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .lang-btn {
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        /* Custom scrollbar for better aesthetics (optional) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600" id="nav-logo">কোর্স হাব</a>
+            <div class="flex items-center space-x-4">
+                <a href="#courses" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" data-lang="nav_courses">কোর্সসমূহ</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" data-lang="nav_testimonials">প্রশংসাপত্র</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium" data-lang="nav_contact">যোগাযোগ</a>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium flex items-center" id="language-dropdown-button">
+                        <span data-lang="nav_language">ভাষা</span>
+                        <svg class="w-4 h-4 ml-1 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                    </button>
+                    <div id="language-dropdown" class="absolute right-0 mt-2 py-2 w-32 bg-white rounded-md shadow-xl z-20 hidden group-hover:block">
+                        <button class="lang-btn block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white w-full text-left" data-lang-switch="bn">বাংলা</button>
+                        <button class="lang-btn block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white w-full text-left" data-lang-switch="en">English</button>
+                        <button class="lang-btn block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-500 hover:text-white w-full text-left" data-lang-switch="hi">हिन्दी</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg text-white pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6" id="hero-title" data-lang="hero_title">আপনার জ্ঞান প্রসারিত করুন</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto" id="hero-subtitle" data-lang="hero_subtitle">সেরা প্রশিক্ষকদের কাছ থেকে শিখুন এবং আপনার ক্যারিয়ারকে পরবর্তী স্তরে নিয়ে যান। আজই শুরু করুন!</p>
+            <a href="#courses" class="bg-white text-indigo-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300" id="hero-cta" data-lang="hero_cta">কোর্স ব্রাউজ করুন</a>
+        </div>
+    </header>
+
+    <!-- Course Categories Section -->
+    <section id="categories" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-lang="categories_title">কোর্সের বিভাগসমূহ</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Category Card 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-indigo-500 text-4xl mb-4">💻</div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang="cat_dev">ডেভেলপমেন্ট</h3>
+                    <p class="text-gray-600 text-sm" data-lang="cat_dev_desc">ওয়েব, মোবাইল এবং সফটওয়্যার ডেভেলপমেন্ট শিখুন।</p>
+                </div>
+                <!-- Category Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-green-500 text-4xl mb-4">📈</div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang="cat_business">ব্যবসা</h3>
+                    <p class="text-gray-600 text-sm" data-lang="cat_business_desc">ফিনান্স, মার্কেটিং, এবং উদ্যোক্তা বিষয়ে জানুন।</p>
+                </div>
+                <!-- Category Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-purple-500 text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang="cat_design">ডিজাইন</h3>
+                    <p class="text-gray-600 text-sm" data-lang="cat_design_desc">গ্রাফিক ডিজাইন, ইউআই/ইউএক্স এবং আরও অনেক কিছু।</p>
+                </div>
+                <!-- Category Card 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-red-500 text-4xl mb-4">🗣️</div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang="cat_marketing">মার্কেটিং</h3>
+                    <p class="text-gray-600 text-sm" data-lang="cat_marketing_desc">ডিজিটাল মার্কেটিং এবং সোশ্যাল মিডিয়া কৌশল শিখুন।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Courses Section -->
+    <section id="courses" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-lang="featured_courses_title">জনপ্রিয় কোর্সসমূহ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://placehold.co/600x400/7F9CF5/FFFFFF?text=কোর্স+১" alt="কোর্সের ছবি ১" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang="course1_title">সম্পূর্ণ ওয়েব ডেভেলপমেন্ট</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-lang="course1_desc">HTML, CSS, JavaScript, React এবং Node.js শিখুন।</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-bold" data-lang="course_price_free">ফ্রি</span>
+                            <a href="#" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300" data-lang="enroll_now">এখনই ভর্তি হন</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Card 2 -->
+                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://placehold.co/600x400/A3BFFA/FFFFFF?text=কোর্স+২" alt="কোর্সের ছবি ২" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang="course2_title">ডিজিটাল মার্কেটিং মাস্টারক্লাস</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-lang="course2_desc">এসইও, কন্টেন্ট মার্কেটিং এবং সোশ্যাল মিডিয়া বিজ্ঞাপন।</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-bold" data-lang="course_price_paid">৳৫০০০</span>
+                            <a href="#" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300" data-lang="enroll_now">এখনই ভর্তি হন</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Card 3 -->
+                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://placehold.co/600x400/D1D5DB/4B5563?text=কোর্স+৩" alt="কোর্সের ছবি ৩" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang="course3_title">গ্রাফিক ডিজাইন বেসিকস</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-lang="course3_desc">Photoshop এবং Illustrator এর মৌলিক বিষয়গুলি আয়ত্ত করুন।</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-indigo-600 font-bold" data-lang="course_price_free">ফ্রি</span>
+                            <a href="#" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300" data-lang="enroll_now">এখনই ভর্তি হন</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-lang="testimonials_title">আমাদের শিক্ষার্থীরা যা বলেন</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-gray-600 mb-6 italic" data-lang="testimonial1_text">"এই প্ল্যাটফর্মটি আমার ক্যারিয়ার পরিবর্তনে সাহায্য করেছে। কোর্সগুলো খুবই তথ্যবহুল এবং প্রশিক্ষকরা অসাধারণ।"</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/E0E7FF/4338CA?text=R" alt="ব্যবহারকারীর ছবি" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold" data-lang="testimonial1_name">রহিমা আক্তার</p>
+                            <p class="text-sm text-gray-500" data-lang="testimonial1_role">ওয়েব ডেভেলপার</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-gray-600 mb-6 italic" data-lang="testimonial2_text">"আমি ডিজিটাল মার্কেটিং কোর্সটি করেছি এবং এর ফলাফল দেখে আমি মুগ্ধ। আমার ব্যবসার উন্নতি হয়েছে।"</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/C7D2FE/3730A3?text=S" alt="ব্যবহারকারীর ছবি" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold" data-lang="testimonial2_name">সুমন আহমেদ</p>
+                            <p class="text-sm text-gray-500" data-lang="testimonial2_role">ছোট ব্যবসায়ী</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <p class="text-gray-600 mb-6 italic" data-lang="testimonial3_text">"ডিজাইন কোর্সগুলো নতুনদের জন্য খুবই উপযোগী। আমি এখন ফ্রিল্যান্সিং শুরু করতে আত্মবিশ্বাসী।"</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/A5B4FC/4C1D95?text=P" alt="ব্যবহারকারীর ছবি" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold" data-lang="testimonial3_name">প্রিয়াঙ্কা দাস</p>
+                            <p class="text-sm text-gray-500" data-lang="testimonial3_role">গ্রাফিক ডিজাইনার</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up" data-lang="contact_title">যোগাযোগ করুন</h2>
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 text-sm font-bold mb-2" data-lang="form_name">নাম</label>
+                        <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="আপনার নাম">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2" data-lang="form_email">ইমেইল</label>
+                        <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="আপনার ইমেইল">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 text-sm font-bold mb-2" data-lang="form_message">বার্তা</label>
+                        <textarea id="message" name="message" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="আপনার বার্তা"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300" data-lang="form_submit">বার্তা পাঠান</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p data-lang="footer_text">&copy; ২০২৪ বহুভাষিক কোর্স প্ল্যাটফর্ম। সর্বস্বত্ব সংরক্ষিত।</p>
+            <p class="text-sm text-gray-400 mt-2" data-lang="footer_credit">ভালোবাসা দিয়ে তৈরি ❤️</p>
+        </div>
+    </footer>
+
+    <!-- AOS JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800, // animation duration in ms
+            once: true, // whether animation should happen only once - while scrolling down
+        });
+
+        // GSAP Animation for Hero Title
+        gsap.from("#hero-title", {
+            duration: 1,
+            opacity: 0,
+            y: -50,
+            delay: 0.5,
+            ease: "power3.out"
+        });
+        gsap.from("#hero-subtitle", {
+            duration: 1,
+            opacity: 0,
+            y: -30,
+            delay: 0.8,
+            ease: "power3.out"
+        });
+        gsap.from("#hero-cta", {
+            duration: 1,
+            opacity: 0,
+            scale: 0.8,
+            delay: 1.1,
+            ease: "back.out(1.7)"
+        });
+
+        // Language data
+        const translations = {
+            bn: {
+                "nav-logo": "কোর্স হাব",
+                "nav_courses": "কোর্সসমূহ",
+                "nav_testimonials": "প্রশংসাপত্র",
+                "nav_contact": "যোগাযোগ",
+                "nav_language": "ভাষা",
+                "hero_title": "আপনার জ্ঞান প্রসারিত করুন",
+                "hero_subtitle": "সেরা প্রশিক্ষকদের কাছ থেকে শিখুন এবং আপনার ক্যারিয়ারকে পরবর্তী স্তরে নিয়ে যান। আজই শুরু করুন!",
+                "hero_cta": "কোর্স ব্রাউজ করুন",
+                "categories_title": "কোর্সের বিভাগসমূহ",
+                "cat_dev": "ডেভেলপমেন্ট",
+                "cat_dev_desc": "ওয়েব, মোবাইল এবং সফটওয়্যার ডেভেলপমেন্ট শিখুন।",
+                "cat_business": "ব্যবসা",
+                "cat_business_desc": "ফিনান্স, মার্কেটিং, এবং উদ্যোক্তা বিষয়ে জানুন।",
+                "cat_design": "ডিজাইন",
+                "cat_design_desc": "গ্রাফিক ডিজাইন, ইউআই/ইউএক্স এবং আরও অনেক কিছু।",
+                "cat_marketing": "মার্কেটিং",
+                "cat_marketing_desc": "ডিজিটাল মার্কেটিং এবং সোশ্যাল মিডিয়া কৌশল শিখুন।",
+                "featured_courses_title": "জনপ্রিয় কোর্সসমূহ",
+                "course1_title": "সম্পূর্ণ ওয়েব ডেভেলপমেন্ট",
+                "course1_desc": "HTML, CSS, JavaScript, React এবং Node.js শিখুন।",
+                "course_price_free": "ফ্রি",
+                "course_price_paid": "৳৫০০০",
+                "enroll_now": "এখনই ভর্তি হন",
+                "course2_title": "ডিজিটাল মার্কেটিং মাস্টারক্লাস",
+                "course2_desc": "এসইও, কন্টেন্ট মার্কেটিং এবং সোশ্যাল মিডিয়া বিজ্ঞাপন।",
+                "course3_title": "গ্রাফিক ডিজাইন বেসিকস",
+                "course3_desc": "Photoshop এবং Illustrator এর মৌলিক বিষয়গুলি আয়ত্ত করুন।",
+                "testimonials_title": "আমাদের শিক্ষার্থীরা যা বলেন",
+                "testimonial1_text": "এই প্ল্যাটফর্মটি আমার ক্যারিয়ার পরিবর্তনে সাহায্য করেছে। কোর্সগুলো খুবই তথ্যবহুল এবং প্রশিক্ষকরা অসাধারণ।",
+                "testimonial1_name": "রহিমা আক্তার",
+                "testimonial1_role": "ওয়েব ডেভেলপার",
+                "testimonial2_text": "আমি ডিজিটাল মার্কেটিং কোর্সটি করেছি এবং এর ফলাফল দেখে আমি মুগ্ধ। আমার ব্যবসার উন্নতি হয়েছে।",
+                "testimonial2_name": "সুমন আহমেদ",
+                "testimonial2_role": "ছোট ব্যবসায়ী",
+                "testimonial3_text": "ডিজাইন কোর্সগুলো নতুনদের জন্য খুবই উপযোগী। আমি এখন ফ্রিল্যান্সিং শুরু করতে আত্মবিশ্বাসী।",
+                "testimonial3_name": "প্রিয়াঙ্কা দাস",
+                "testimonial3_role": "গ্রাফিক ডিজাইনার",
+                "contact_title": "যোগাযোগ করুন",
+                "form_name": "নাম",
+                "form_email": "ইমেইল",
+                "form_message": "বার্তা",
+                "form_submit": "বার্তা পাঠান",
+                "footer_text": "© ২০২৪ বহুভাষিক কোর্স প্ল্যাটফর্ম। সর্বস্বত্ব সংরক্ষিত।",
+                "footer_credit": "ভালোবাসা দিয়ে তৈরি ❤️"
+
+            },
+            en: {
+                "nav-logo": "Course Hub",
+                "nav_courses": "Courses",
+                "nav_testimonials": "Testimonials",
+                "nav_contact": "Contact",
+                "nav_language": "Language",
+                "hero_title": "Expand Your Knowledge",
+                "hero_subtitle": "Learn from the best instructors and take your career to the next level. Start today!",
+                "hero_cta": "Browse Courses",
+                "categories_title": "Course Categories",
+                "cat_dev": "Development",
+                "cat_dev_desc": "Learn web, mobile, and software development.",
+                "cat_business": "Business",
+                "cat_business_desc": "Explore finance, marketing, and entrepreneurship.",
+                "cat_design": "Design",
+                "cat_design_desc": "Graphic design, UI/UX, and more.",
+                "cat_marketing": "Marketing",
+                "cat_marketing_desc": "Learn digital marketing and social media strategies.",
+                "featured_courses_title": "Popular Courses",
+                "course1_title": "Complete Web Development",
+                "course1_desc": "Learn HTML, CSS, JavaScript, React, and Node.js.",
+                "course_price_free": "Free",
+                "course_price_paid": "$50",
+                "enroll_now": "Enroll Now",
+                "course2_title": "Digital Marketing Masterclass",
+                "course2_desc": "SEO, content marketing, and social media advertising.",
+                "course3_title": "Graphic Design Basics",
+                "course3_desc": "Master the fundamentals of Photoshop and Illustrator.",
+                "testimonials_title": "What Our Students Say",
+                "testimonial1_text": "This platform helped me change my career. The courses are very informative and the instructors are amazing.",
+                "testimonial1_name": "Rahima Akter",
+                "testimonial1_role": "Web Developer",
+                "testimonial2_text": "I took the digital marketing course and I'm amazed by the results. My business has improved.",
+                "testimonial2_name": "Sumon Ahmed",
+                "testimonial2_role": "Small Business Owner",
+                "testimonial3_text": "The design courses are very useful for beginners. I am now confident to start freelancing.",
+                "testimonial3_name": "Priyanka Das",
+                "testimonial3_role": "Graphic Designer",
+                "contact_title": "Contact Us",
+                "form_name": "Name",
+                "form_email": "Email",
+                "form_message": "Message",
+                "form_submit": "Send Message",
+                "footer_text": "© 2024 Multilingual Course Platform. All rights reserved.",
+                "footer_credit": "Made with love ❤️"
+            },
+            hi: {
+                "nav-logo": "कोर्स हब",
+                "nav_courses": "पाठ्यक्रम",
+                "nav_testimonials": "प्रशंसापत्र",
+                "nav_contact": "संपर्क",
+                "nav_language": "भाषा",
+                "hero_title": "अपना ज्ञान बढ़ाएँ",
+                "hero_subtitle": "सर्वश्रेष्ठ प्रशिक्षकों से सीखें और अपने करियर को अगले स्तर पर ले जाएं। आज ही शुरू करें!",
+                "hero_cta": "पाठ्यक्रम ब्राउज़ करें",
+                "categories_title": "पाठ्यक्रम श्रेणियाँ",
+                "cat_dev": "विकास",
+                "cat_dev_desc": "वेब, मोबाइल और सॉफ्टवेयर विकास सीखें।",
+                "cat_business": "व्यवसाय",
+                "cat_business_desc": "वित्त, विपणन और उद्यमिता का अन्वेषण करें।",
+                "cat_design": "डिज़ाइन",
+                "cat_design_desc": "ग्राफिक डिज़ाइन, यूआई/यूएक्स, और भी बहुत कुछ।",
+                "cat_marketing": "विपणन",
+                "cat_marketing_desc": "डिजिटल मार्केटिंग और सोशल मीडिया रणनीतियाँ सीखें।",
+                "featured_courses_title": "लोकप्रिय पाठ्यक्रम",
+                "course1_title": "पूर्ण वेब विकास",
+                "course1_desc": "HTML, CSS, JavaScript, React और Node.js सीखें।",
+                "course_price_free": "निःशुल्क",
+                "course_price_paid": "₹3000",
+                "enroll_now": "अभी पंजीकरण करें",
+                "course2_title": "डिजिटल मार्केटिंग मास्टरक्लास",
+                "course2_desc": "एसईओ, सामग्री विपणन और सोशल मीडिया विज्ञापन।",
+                "course3_title": "ग्राफिक डिजाइन मूल बातें",
+                "course3_desc": "फ़ोटोशॉप और इलस्ट्रेटर के मूल सिद्धांतों में महारत हासिल करें।",
+                "testimonials_title": "हमारे छात्र क्या कहते हैं",
+                "testimonial1_text": "इस मंच ने मुझे अपना करियर बदलने में मदद की। पाठ्यक्रम बहुत जानकारीपूर्ण हैं और प्रशिक्षक अद्भुत हैं।",
+                "testimonial1_name": "रहिमा अख्तर",
+                "testimonial1_role": "वेब डेवलपर",
+                "testimonial2_text": "मैंने डिजिटल मार्केटिंग कोर्स किया और मैं परिणामों से चकित हूं। मेरे व्यवसाय में सुधार हुआ है।",
+                "testimonial2_name": "सुमन अहमद",
+                "testimonial2_role": "छोटे व्यवसायी",
+                "testimonial3_text": "डिजाइन पाठ्यक्रम शुरुआती लोगों के लिए बहुत उपयोगी हैं। अब मैं फ्रीलांसिंग शुरू करने के लिए आश्वस्त हूं।",
+                "testimonial3_name": "प्रियंका दास",
+                "testimonial3_role": "ग्राफिक डिजाइनर",
+                "contact_title": "हमसे संपर्क करें",
+                "form_name": "नाम",
+                "form_email": "ईमेल",
+                "form_message": "संदेश",
+                "form_submit": "संदेश भेजें",
+                "footer_text": "© २०२४ बहुभाषी पाठ्यक्रम मंच। सर्वाधिकार सुरक्षित।",
+                "footer_credit": "प्यार से बनाया ❤️"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+             // Update active button style
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-indigo-500', 'text-white');
+                if (btn.getAttribute('data-lang-switch') === lang) {
+                    btn.classList.add('active', 'bg-indigo-500', 'text-white');
+                }
+            });
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+            // Update title
+            if (lang === 'bn') document.title = "বহুভাষিক কোর্স প্ল্যাটফর্ম";
+            else if (lang === 'en') document.title = "Multilingual Course Platform";
+            else if (lang === 'hi') document.title = "बहुभाषी पाठ्यक्रम मंच";
+        }
+
+        // Event listeners for language switch buttons
+        document.querySelectorAll('[data-lang-switch]').forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang-switch');
+                changeLanguage(lang);
+                localStorage.setItem('preferredLang', lang); // Save preference
+                document.getElementById('language-dropdown').classList.add('hidden'); // Hide dropdown after selection
+            });
+        });
+
+        // Toggle language dropdown visibility
+        const langDropdownButton = document.getElementById('language-dropdown-button');
+        const langDropdown = document.getElementById('language-dropdown');
+
+        // Show on hover is handled by Tailwind group-hover, this is for click persistence or touch devices
+        langDropdownButton.addEventListener('click', () => {
+            langDropdown.classList.toggle('hidden');
+        });
+
+        // Hide dropdown if clicked outside
+        document.addEventListener('click', function(event) {
+            if (!langDropdownButton.contains(event.target) && !langDropdown.contains(event.target)) {
+                langDropdown.classList.add('hidden');
+            }
+        });
+
+
+        // Load preferred language or default to Bengali
+        const preferredLang = localStorage.getItem('preferredLang') || 'bn';
+        changeLanguage(preferredLang);
+        
+        // Ensure smooth scrolling for navbar links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Calculate offset for fixed navbar
+                    const navbarHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+                 // Hide dropdown if open
+                document.getElementById('language-dropdown').classList.add('hidden');
+            });
+        });
+
+    </script>
+</body>
+</html>
