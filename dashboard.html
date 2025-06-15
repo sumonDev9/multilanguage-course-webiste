@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Monitoring Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 min-h-screen text-white">
+    <!-- Header -->
+    <header class="bg-black/30 backdrop-blur-lg border-b border-white/10 p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Application Monitoring System
+            </h1>
+            <div class="flex items-center space-x-4">
+                <div class="bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30">
+                    <span class="text-green-400 text-sm font-medium">System Online</span>
+                </div>
+                <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
+                    <i class="fas fa-cog mr-2"></i>Settings
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto p-6">
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Office Management Section -->
+            <div class="lg:col-span-1">
+                <div class="bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10 p-6 hover:border-blue-500/30 transition-all">
+                    <h2 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-building mr-3 text-blue-400"></i>Office Management
+                    </h2>
+                    
+                    <!-- Multi Management -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-blue-300 mb-3">Multi Management</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 p-3 rounded-lg transition-all transform hover:scale-105 text-sm">
+                                <i class="fas fa-users mb-2 block"></i>Production-HoD
+                            </button>
+                            <button class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 p-3 rounded-lg transition-all transform hover:scale-105 text-sm">
+                                <i class="fas fa-chart-line mb-2 block"></i>Sales-NHSM
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Asset Management -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-green-300 mb-3">Asset Management</h3>
+                        <div class="space-y-2">
+                            <div class="bg-gray-800/50 p-3 rounded-lg flex justify-between items-center">
+                                <span class="text-sm">D.G.M</span>
+                                <span class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">Active</span>
+                            </div>
+                            <div class="bg-gray-800/50 p-3 rounded-lg flex justify-between items-center">
+                                <span class="text-sm">HR-Plant Account</span>
+                                <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded text-xs">Managing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Structure -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-purple-300 mb-3">Team Structure</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-center p-2 bg-purple-600/20 rounded-lg">
+                                <div class="text-xs text-purple-300">RSM</div>
+                                <div class="text-lg font-bold">12</div>
+                            </div>
+                            <div class="text-center p-2 bg-indigo-600/20 rounded-lg">
+                                <div class="text-xs text-indigo-300">ASM</div>
+                                <div class="text-lg font-bold">24</div>
+                            </div>
+                            <div class="text-center p-2 bg-pink-600/20 rounded-lg">
+                                <div class="text-xs text-pink-300">SM</div>
+                                <div class="text-lg font-bold">45</div>
+                            </div>
+                            <div class="text-center p-2 bg-orange-600/20 rounded-lg">
+                                <div class="text-xs text-orange-300">Teams</div>
+                                <div class="text-lg font-bold">156</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance & Quality Control -->
+            <div class="lg:col-span-1">
+                <div class="bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10 p-6 hover:border-green-500/30 transition-all">
+                    <h2 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-calendar-check mr-3 text-green-400"></i>Attendance & Quality
+                    </h2>
+                    
+                    <!-- Attendance Chart -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-green-300 mb-3">Today's Attendance</h3>
+                        <div class="bg-gray-800/30 p-4 rounded-lg">
+                            <canvas id="attendanceChart" width="200" height="100"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Quality Control -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-yellow-300 mb-3">Quality Control</h3>
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="bg-yellow-600/20 p-3 rounded-lg flex justify-between items-center">
+                                <span class="text-sm">QC Stock Logistics</span>
+                                <span class="bg-yellow-500/30 text-yellow-300 px-2 py-1 rounded text-xs">
+                                    <i class="fas fa-check-circle mr-1"></i>Approved
+                                </span>
+                            </div>
+                            <div class="bg-blue-600/20 p-3 rounded-lg flex justify-between items-center">
+                                <span class="text-sm">Sales Delivery Account</span>
+                                <span class="bg-blue-500/30 text-blue-300 px-2 py-1 rounded text-xs">
+                                    <i class="fas fa-clock mr-1"></i>Processing
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HOD Management -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-cyan-300 mb-3">HOD Management</h3>
+                        <div class="bg-cyan-600/20 p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-cyan-300">8/10</div>
+                            <div class="text-sm text-cyan-400">HODs Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stock & Logistics -->
+            <div class="lg:col-span-1">
+                <div class="bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10 p-6 hover:border-orange-500/30 transition-all">
+                    <h2 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-boxes mr-3 text-orange-400"></i>Stock & Logistics
+                    </h2>
+                    
+                    <!-- Stock Overview -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-orange-300 mb-3">Stock Overview</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                <span class="text-sm">Raw Material</span>
+                                <span class="text-green-400 font-semibold">85%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                <span class="text-sm">Ready Material</span>
+                                <span class="text-yellow-400 font-semibold">62%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                <span class="text-sm">In Stock</span>
+                                <span class="text-blue-400 font-semibold">78%</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                <span class="text-sm">Out Stock</span>
+                                <span class="text-red-400 font-semibold">15%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logistics Status -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-purple-300 mb-3">Logistics Status</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="bg-purple-600/20 hover:bg-purple-600/30 p-3 rounded-lg text-center transition-all">
+                                <div class="text-sm text-purple-300">Supply Chain</div>
+                                <div class="text-lg font-bold">Active</div>
+                            </button>
+                            <button class="bg-green-600/20 hover:bg-green-600/30 p-3 rounded-lg text-center transition-all">
+                                <div class="text-sm text-green-300">Delivery Routing</div>
+                                <div class="text-lg font-bold">Online</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Office Monitoring & Development -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Office All Section Monitoring -->
+            <div class="bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10 p-6 hover:border-cyan-500/30 transition-all">
+                <h2 class="text-xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-monitor-waveform mr-3 text-cyan-400"></i>Office Monitoring
+                </h2>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-cyan-600/20 p-4 rounded-lg text-center">
+                        <i class="fas fa-chart-bar text-2xl text-cyan-400 mb-2"></i>
+                        <h3 class="font-semibold text-cyan-300">QC Section</h3>
+                        <p class="text-sm text-cyan-400">Monitoring Active</p>
+                    </div>
+                    <div class="bg-blue-600/20 p-4 rounded-lg text-center">
+                        <i class="fas fa-boxes text-2xl text-blue-400 mb-2"></i>
+                        <h3 class="font-semibold text-blue-300">Stock</h3>
+                        <p class="text-sm text-blue-400">Real-time Tracking</p>
+                    </div>
+                    <div class="bg-green-600/20 p-4 rounded-lg text-center">
+                        <i class="fas fa-truck text-2xl text-green-400 mb-2"></i>
+                        <h3 class="font-semibold text-green-300">Logistics</h3>
+                        <p class="text-sm text-green-400">Route Optimization</p>
+                    </div>
+                    <div class="bg-purple-600/20 p-4 rounded-lg text-center">
+                        <i class="fas fa-users text-2xl text-purple-400 mb-2"></i>
+                        <h3 class="font-semibold text-purple-300">HR</h3>
+                        <p class="text-sm text-purple-400">Employee Management</p>
+                    </div>
+                </div>
+
+                <!-- Additional Monitoring Features -->
+                <div class="grid grid-cols-3 gap-3">
+                    <button class="bg-gray-700/50 hover:bg-gray-600/50 p-3 rounded-lg text-center transition-all">
+                        <div class="text-xs text-gray-300">Web Developer</div>
+                        <div class="text-sm font-semibold">Online</div>
+                    </button>
+                    <button class="bg-gray-700/50 hover:bg-gray-600/50 p-3 rounded-lg text-center transition-all">
+                        <div class="text-xs text-gray-300">Accounts</div>
+                        <div class="text-sm font-semibold">Active</div>
+                    </button>
+                    <button class="bg-gray-700/50 hover:bg-gray-600/50 p-3 rounded-lg text-center transition-all">
+                        <div class="text-xs text-gray-300">Purchase Dept</div>
+                        <div class="text-sm font-semibold">Processing</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Web Development & Online Promo Team -->
+            <div class="bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10 p-6 hover:border-pink-500/30 transition-all">
+                <h2 class="text-xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-code mr-3 text-pink-400"></i>Development & Promo Team
+                </h2>
+                
+                <!-- Development Status -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-pink-300 mb-3">Development Status</h3>
+                    <div class="bg-gradient-to-r from-pink-600/20 to-purple-600/20 p-4 rounded-lg mb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm">Web Development Progress</span>
+                            <span class="text-pink-400 font-semibold">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-pink-500 to-purple-500 h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Performance -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold text-purple-300 mb-3">Team Performance</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-purple-600/20 p-3 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-purple-300">12</div>
+                            <div class="text-xs text-purple-400">Active Projects</div>
+                        </div>
+                        <div class="bg-pink-600/20 p-3 rounded-lg text-center">
+                            <div class="text-2xl font-bold text-pink-300">8</div>
+                            <div class="text-xs text-pink-400">Team Members</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div>
+                    <h3 class="text-lg font-semibold text-cyan-300 mb-3">Quick Actions</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 p-3 rounded-lg transition-all transform hover:scale-105 text-sm">
+                            <i class="fas fa-rocket mr-2"></i>Deploy
+                        </button>
+                        <button class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 p-3 rounded-lg transition-all transform hover:scale-105 text-sm">
+                            <i class="fas fa-chart-line mr-2"></i>Analytics
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Updates Section -->
+        <div class="mt-8 bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10 p-6">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-bell mr-3 text-yellow-400"></i>Real-time Updates
+            </h2>
+            <div id="updates" class="space-y-2 max-h-32 overflow-y-auto">
+                <!-- Updates will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for demonstration
+        const sampleData = {
+            attendance: {
+                present: 245,
+                absent: 23,
+                late: 12
+            },
+            stock: {
+                rawMaterial: 85,
+                readyMaterial: 62,
+                inStock: 78,
+                outStock: 15
+            },
+            updates: [
+                "QC Section: Quality check completed for batch #2024-001",
+                "Stock Alert: Raw material inventory at 85%",
+                "Logistics: 3 deliveries scheduled for tomorrow",
+                "HR Update: New employee onboarding completed",
+                "Development: Web portal update deployed successfully"
+            ]
+        };
+
+        // Initialize Attendance Chart
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Present', 'Absent', 'Late'],
+                datasets: [{
+                    data: [sampleData.attendance.present, sampleData.attendance.absent, sampleData.attendance.late],
+                    backgroundColor: ['#10B981', '#EF4444', '#F59E0B'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#E5E7EB',
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+
+        // Real-time updates simulation
+        function updateRealTimeData() {
+            const updatesContainer = document.getElementById('updates');
+            updatesContainer.innerHTML = '';
+            
+            sampleData.updates.forEach((update, index) => {
+                const updateElement = document.createElement('div');
+                updateElement.className = 'bg-gray-800/30 p-3 rounded-lg text-sm flex items-center space-x-3';
+                updateElement.innerHTML = `
+                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span>${update}</span>
+                    <span class="text-gray-400 text-xs ml-auto">${new Date().toLocaleTimeString()}</span>
+                `;
+                updatesContainer.appendChild(updateElement);
+            });
+        }
+
+        // Initialize real-time updates
+        updateRealTimeData();
+        setInterval(updateRealTimeData, 30000); // Update every 30 seconds
+
+        // Add click functionality to all buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Add ripple effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Show notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-pulse';
+                notification.textContent = `${this.textContent.trim()} clicked!`;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 2000);
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.bg-black\\/20').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Simulate data updates every 10 seconds
+        setInterval(() => {
+            // Update stock percentages randomly
+            const stockElements = document.querySelectorAll('.text-green-400, .text-yellow-400, .text-blue-400, .text-red-400');
+            stockElements.forEach(element => {
+                if (element.textContent.includes('%')) {
+                    const currentValue = parseInt(element.textContent);
+                    const newValue = Math.max(0, Math.min(100, currentValue + (Math.random() * 10 - 5)));
+                    element.textContent = Math.round(newValue) + '%';
+                }
+            });
+        }, 10000);
+    </script>
+</body>
+</html>

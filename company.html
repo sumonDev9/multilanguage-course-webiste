@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourCompany - We Build Stunning Websites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Custom Styles for Swiper and Accordion */
+        .swiper-button-next, .swiper-button-prev {
+            color: #4f46e5;
+        }
+        .swiper-pagination-bullet-active {
+            background: #4f46e5;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 overflow-x-hidden">
+    <!-- header start here -->
+    <header id="header" class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">YourCompany</a>
+
+            <ul class="hidden md:flex items-center space-x-6">
+                <li><a href="#home" class="hover:text-indigo-600 dark:hover:text-indigo-400">Home</a></li>
+                <li><a href="#services" class="hover:text-indigo-600 dark:hover:text-indigo-400">Services</a></li>
+                <li><a href="#portfolio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Portfolio</a></li>
+                <li><a href="#process" class="hover:text-indigo-600 dark:hover:text-indigo-400">Process</a></li>
+                <li><a href="#pricing" class="hover:text-indigo-600 dark:hover:text-indigo-400">Pricing</a></li>
+                <li><a href="#faq" class="hover:text-indigo-600 dark:hover:text-indigo-400">FAQ</a></li>
+                <li><a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a></li>
+            </ul>
+
+            <a href="#contact" class="hidden md:block bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Get a Quote</a>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900">
+            <ul class="px-6 py-4 space-y-4">
+                <li><a href="#home" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Home</a></li>
+                <li><a href="#services" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Services</a></li>
+                <li><a href="#portfolio" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Portfolio</a></li>
+                <li><a href="#process" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Process</a></li>
+                <li><a href="#pricing" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Pricing</a></li>
+                <li><a href="#faq" class="block hover:text-indigo-600 dark:hover:text-indigo-400">FAQ</a></li>
+                <li><a href="#contact" class="block hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a></li>
+                <li><a href="#contact" class="block bg-indigo-600 text-white text-center px-5 py-2 rounded-full hover:bg-indigo-700 transition">Get a Quote</a></li>
+            </ul>
+        </div>
+    </header>
+     <!-- header end here -->
+    <main>
+        <!-- home start here -->
+        <section id="home" class="relative min-h-screen flex items-center bg-indigo-50 dark:bg-slate-800 pt-20">
+            <div class="absolute inset-0 overflow-hidden">
+                <svg class="absolute bottom-0 left-0 w-full h-auto text-white dark:text-slate-900" fill="currentColor" viewBox="0 0 1440 320"><path fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,240C672,256,768,256,864,229.3C960,203,1056,149,1152,138.7C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            </div>
+            <div class="container mx-auto px-6 text-center z-10">
+                <div data-aos="fade-up">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">We Build Stunning Websites</h1>
+                    <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">That captivate your audience and grow your business.</p>
+                    <div class="mt-8 flex justify-center gap-4">
+                        <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition">Get a Quote</a>
+                        <a href="#portfolio" class="bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200 px-8 py-3 rounded-full text-lg font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">View Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- home end here -->
+
+        <!-- services start here -->
+        <section id="services" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Services</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">We offer a wide range of web solutions.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-500/20 transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-4xl text-indigo-600 dark:text-indigo-400 mb-4"><i class="fas fa-palette"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Web Design</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Crafting visually stunning and user-friendly interfaces that leave a lasting impression.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-500/20 transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-4xl text-indigo-600 dark:text-indigo-400 mb-4"><i class="fas fa-code"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Web Development</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Building robust and scalable websites with clean, efficient code.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-500/20 transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-4xl text-indigo-600 dark:text-indigo-400 mb-4"><i class="fas fa-mobile-alt"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Responsive Design</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Ensuring your website looks and functions perfectly on all devices, from desktops to smartphones.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-500/20 transition-shadow" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-4xl text-indigo-600 dark:text-indigo-400 mb-4"><i class="fas fa-shopping-cart"></i></div>
+                        <h3 class="text-xl font-bold mb-2">E-commerce Development</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Creating powerful online stores to help you sell products and services effectively.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-500/20 transition-shadow" data-aos="fade-up" data-aos-delay="500">
+                        <div class="text-4xl text-indigo-600 dark:text-indigo-400 mb-4"><i class="fas fa-file-alt"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Landing Page Design</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Designing high-converting landing pages for your marketing campaigns.</p>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-indigo-200 dark:hover:shadow-indigo-500/20 transition-shadow" data-aos="fade-up" data-aos-delay="600">
+                        <div class="text-4xl text-indigo-600 dark:text-indigo-400 mb-4"><i class="fas fa-headset"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Maintenance & Support</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Providing ongoing support to keep your website secure, updated, and running smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- services start here -->
+
+        <!-- Why Choose Us start here -->
+        <section id="why-choose-us" class="py-20 bg-slate-50 dark:bg-slate-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Why Choose Us?</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">The benefits of working with our team.</p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                    <div class="p-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-4xl text-teal-500 dark:text-teal-400 mb-3"><i class="fas fa-rocket"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Fast Delivery</h3>
+                        <p class="text-slate-600 dark:text-slate-400">We deliver high-quality websites on time, every time.</p>
+                    </div>
+                    <div class="p-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-4xl text-teal-500 dark:text-teal-400 mb-3"><i class="fas fa-search-dollar"></i></div>
+                        <h3 class="text-xl font-bold mb-2">SEO Optimized Code</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Built with SEO best practices to help you rank higher.</p>
+                    </div>
+                    <div class="p-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-4xl text-teal-500 dark:text-teal-400 mb-3"><i class="fas fa-tags"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Affordable Price</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Get a premium website without breaking the bank.</p>
+                    </div>
+                    <div class="p-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-4xl text-teal-500 dark:text-teal-400 mb-3"><i class="fas fa-drafting-compass"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Clean UI/UX</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Intuitive and elegant designs for the best user experience.</p>
+                    </div>
+                    <div class="p-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="text-4xl text-teal-500 dark:text-teal-400 mb-3"><i class="fas fa-life-ring"></i></div>
+                        <h3 class="text-xl font-bold mb-2">Lifetime Support</h3>
+                        <p class="text-slate-600 dark:text-slate-400">We're here to help you long after your site is launched.</p>
+                    </div>
+                    <div class="p-6" data-aos="fade-up" data-aos-delay="600">
+                        <div class="text-4xl text-teal-500 dark:text-teal-400 mb-3"><i class="fas fa-expand-arrows-alt"></i></div>
+                        <h3 class="text-xl font-bold mb-2">100% Responsive</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Perfectly adapts to any screen size and device.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why Choose Us start here -->
+
+        <!-- portfolio start here -->
+
+        <section id="portfolio" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Work</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">A selection of our finest projects.</p>
+                </div>
+                <div class="swiper-container portfolio-swiper" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide group relative">
+                            <img src="https://via.placeholder.com/600x400/4f46e5/ffffff?text=Project+One" alt="Project One" class="rounded-lg w-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center text-white text-center p-4 transition-opacity rounded-lg">
+                                <h3 class="text-xl font-bold">Project One</h3>
+                                <p class="text-sm">React, Tailwind CSS</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide group relative">
+                             <img src="https://via.placeholder.com/600x400/14b8a6/ffffff?text=Project+Two" alt="Project Two" class="rounded-lg w-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center text-white text-center p-4 transition-opacity rounded-lg">
+                                <h3 class="text-xl font-bold">Project Two</h3>
+                                <p class="text-sm">JavaScript, DaisyUI</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide group relative">
+                             <img src="https://via.placeholder.com/600x400/f59e0b/ffffff?text=Project+Three" alt="Project Three" class="rounded-lg w-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center text-white text-center p-4 transition-opacity rounded-lg">
+                                <h3 class="text-xl font-bold">Project Three</h3>
+                                <p class="text-sm">HTML, CSS</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide group relative">
+                             <img src="https://via.placeholder.com/600x400/8b5cf6/ffffff?text=Project+Four" alt="Project Four" class="rounded-lg w-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center text-white text-center p-4 transition-opacity rounded-lg">
+                                <h3 class="text-xl font-bold">Project Four</h3>
+                                <p class="text-sm">React, Next.js</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination mt-8"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- portfolio start here -->
+
+        <!-- Our Process start here -->
+        <section id="process" class="py-20 bg-slate-50 dark:bg-slate-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Process</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">A streamlined journey from idea to launch.</p>
+                </div>
+                <div class="relative">
+                    <div class="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 w-full h-1 bg-indigo-200 dark:bg-slate-700" data-aos="fade-in"></div>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center relative p-4" data-aos="fade-right" data-aos-delay="100">
+                            <div class="bg-indigo-600 text-white w-20 h-20 mx-auto rounded-full flex items-center justify-center text-2xl font-bold mb-4 z-10 relative border-4 border-slate-50 dark:border-slate-800">01</div>
+                            <h3 class="text-xl font-bold mb-2">Discussion</h3>
+                            <p class="text-slate-600 dark:text-slate-400">We start by understanding your goals, audience, and vision.</p>
+                        </div>
+                        <div class="text-center relative p-4" data-aos="fade-right" data-aos-delay="300">
+                             <div class="bg-indigo-600 text-white w-20 h-20 mx-auto rounded-full flex items-center justify-center text-2xl font-bold mb-4 z-10 relative border-4 border-slate-50 dark:border-slate-800">02</div>
+                            <h3 class="text-xl font-bold mb-2">Design</h3>
+                            <p class="text-slate-600 dark:text-slate-400">We create wireframes and mockups for a stunning, user-friendly design.</p>
+                        </div>
+                        <div class="text-center relative p-4" data-aos="fade-left" data-aos-delay="500">
+                             <div class="bg-indigo-600 text-white w-20 h-20 mx-auto rounded-full flex items-center justify-center text-2xl font-bold mb-4 z-10 relative border-4 border-slate-50 dark:border-slate-800">03</div>
+                            <h3 class="text-xl font-bold mb-2">Development</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Our developers bring the design to life with clean and efficient code.</p>
+                        </div>
+                        <div class="text-center relative p-4" data-aos="fade-left" data-aos-delay="700">
+                             <div class="bg-indigo-600 text-white w-20 h-20 mx-auto rounded-full flex items-center justify-center text-2xl font-bold mb-4 z-10 relative border-4 border-slate-50 dark:border-slate-800">04</div>
+                            <h3 class="text-xl font-bold mb-2">Launch</h3>
+                            <p class="text-slate-600 dark:text-slate-400">We deploy your website and ensure everything is running perfectly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- Our Process end here -->
+
+        <!-- Our Pricing start here -->
+        <section id="pricing" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Our Pricing</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">Transparent plans for every need.</p>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-8 items-center">
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-bold text-center mb-2">Basic Site</h3>
+                        <p class="text-center text-slate-500 dark:text-slate-400 mb-6">Perfect for personal use or portfolios.</p>
+                        <p class="text-4xl font-extrabold text-center mb-6">$500+</p>
+                        <ul class="space-y-4 text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Up to 5 Pages</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Responsive Design</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Contact Form</li>
+                            <li class="flex items-center"><i class="fas fa-times-circle text-slate-400 mr-2"></i>CMS Integration</li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 mt-8 py-3 rounded-full font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">Get This Plan</a>
+                    </div>
+
+                    <div class="bg-indigo-600 text-white p-8 rounded-xl shadow-2xl relative" data-aos="fade-up" data-aos-delay="200">
+                        <span class="absolute top-0 right-8 bg-amber-400 text-slate-900 text-sm font-bold px-3 py-1 rounded-b-lg">POPULAR</span>
+                        <h3 class="text-2xl font-bold text-center mb-2">Business Site</h3>
+                        <p class="text-center text-indigo-200 mb-6">Ideal for small businesses and startups.</p>
+                        <p class="text-4xl font-extrabold text-center mb-6">$1200+</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2"></i>Up to 10 Pages</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2"></i>Responsive Design</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2"></i>Contact Form & CMS</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-400 mr-2"></i>Basic SEO</li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center bg-white text-indigo-600 mt-8 py-3 rounded-full font-semibold hover:bg-indigo-100 transition">Get This Plan</a>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-bold text-center mb-2">E-commerce Site</h3>
+                        <p class="text-center text-slate-500 dark:text-slate-400 mb-6">For businesses ready to sell online.</p>
+                        <p class="text-4xl font-extrabold text-center mb-6">$2500+</p>
+                        <ul class="space-y-4 text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Unlimited Products</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Payment Gateway</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Full E-commerce Func.</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-teal-500 mr-2"></i>Advanced SEO</li>
+                        </ul>
+                        <a href="#contact" class="block w-full text-center bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 mt-8 py-3 rounded-full font-semibold hover:bg-slate-300 dark:hover:bg-slate-600 transition">Get This Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- Our Pricing start here -->
+
+        <!-- What Clients Say start here -->
+        <section id="testimonials" class="py-20 bg-slate-50 dark:bg-slate-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">What Clients Say</h2>
+                     <p class="mt-2 text-slate-600 dark:text-slate-400">Real feedback from our happy clients.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg" data-aos="fade-right">
+                        <div class="flex items-center mb-4">
+                            <img src="https://i.pravatar.cc/150?img=1" alt="Client 1" class="w-16 h-16 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold text-lg">Jane Doe</h4>
+                                <div class="text-amber-400">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400">"The team delivered an amazing website that exceeded all my expectations. The process was smooth and communication was excellent. Highly recommended!"</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg" data-aos="fade-left">
+                        <div class="flex items-center mb-4">
+                            <img src="https://i.pravatar.cc/150?img=2" alt="Client 2" class="w-16 h-16 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold text-lg">John Smith</h4>
+                                <div class="text-amber-400">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400">"Incredible attention to detail and a fantastic final product. Our new website is fast, responsive, and looks beautiful. A pleasure to work with."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- What Clients Say end here -->
+
+        <!-- faq start here -->
+        <section id="faq" class="py-20 bg-white dark:bg-slate-900">
+            <div class="container mx-auto px-6 max-w-3xl">
+                 <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
+                 </div>
+                 <div class="space-y-4" data-aos="fade-up">
+                    <div class="accordion-item bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full text-left p-6 font-semibold flex justify-between items-center">
+                            কতো দিনে ওয়েবসাইট পাবো? (How many days to get the website?)
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 text-slate-600 dark:text-slate-400">
+                            একটি বেসিক ওয়েবসাইট তৈরি করতে সাধারণত ৭-১৪ দিন সময় লাগে। তবে, ওয়েবসাইটের জটিলতা এবং আপনার প্রয়োজনীয়তার উপর নির্ভর করে সময় কম বা বেশি হতে পারে।
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full text-left p-6 font-semibold flex justify-between items-center">
+                            রেসপন্সিভ হবে? (Will it be responsive?)
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 text-slate-600 dark:text-slate-400">
+                            হ্যাঁ, আমাদের তৈরি করা প্রতিটি ওয়েবসাইট ১০০% রেসপন্সিভ। এটি মোবাইল, ট্যাবলেট, এবং ডেস্কটপ সহ সকল ডিভাইসে সুন্দরভাবে দেখা যাবে।
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full text-left p-6 font-semibold flex justify-between items-center">
+                           দাম কতো? (What is the price?)
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 text-slate-600 dark:text-slate-400">
+                           দাম আপনার ওয়েবসাইটের ধরনের উপর নির্ভর করে। আমাদের প্রাইসিং সেকশনে বিভিন্ন প্যাকেজ সম্পর্কে ধারণা দেওয়া আছে। নির্দিষ্ট দাম জানতে আমাদের সাথে যোগাযোগ করুন।
+                        </div>
+                    </div>
+                     <div class="accordion-item bg-slate-50 dark:bg-slate-800 rounded-lg shadow-sm">
+                        <button class="accordion-header w-full text-left p-6 font-semibold flex justify-between items-center">
+                           কিভাবে পেমেন্ট করবো? (How do I pay?)
+                            <i class="fas fa-chevron-down transform transition-transform"></i>
+                        </button>
+                        <div class="accordion-content p-6 pt-0 text-slate-600 dark:text-slate-400">
+                          আমরা সাধারণত ৫০% অগ্রিম এবং বাকি ৫০% কাজ শেষ হওয়ার পর নিয়ে থাকি। আপনি ব্যাংক ট্রান্সফার বা মোবাইল ব্যাংকিং এর মাধ্যমে পেমেন্ট করতে পারবেন।
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        <!-- faq start here -->
+
+        <!-- Let’s Work Together start here -->
+        <section id="contact" class="py-20 bg-slate-50 dark:bg-slate-800">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold">Let’s Work Together</h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400">Have a project in mind? We'd love to hear about it.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg" data-aos="fade-right">
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2 font-semibold">Name</label>
+                                <input type="text" id="name" class="w-full p-3 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                             <div class="mb-4">
+                                <label for="email" class="block mb-2 font-semibold">Email</label>
+                                <input type="email" id="email" class="w-full p-3 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                             <div class="mb-4">
+                                <label for="message" class="block mb-2 font-semibold">Message</label>
+                                <textarea id="message" rows="5" class="w-full p-3 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition">Send Message</button>
+                        </form>
+                    </div>
+                    <div data-aos="fade-left">
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-2xl text-indigo-600 dark:text-indigo-400 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">Email</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">contact@yourcompany.com</p>
+                                </div>
+                            </div>
+                             <div class="flex items-start">
+                                <i class="fas fa-phone text-2xl text-indigo-600 dark:text-indigo-400 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">Phone</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">+1 234 567 890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-2xl text-indigo-600 dark:text-indigo-400 mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg">Location</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">123 Web Street, Webville, WB</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                           <iframe class="w-full h-64 rounded-lg shadow-md" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235824.7709664593!2d88.19142838760232!3d22.57303119100373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02760c0f96e17f%3A0x8a2f0c7e2d9b2b5!2sKolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1623758838380!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Let’s Work Together end here -->
+
+    </main>
+
+    <!-- footer start here -->
+
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 py-8">
+            <div class="md:flex md:justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                     <a href="#" class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">YourCompany</a>
+                </div>
+                <ul class="flex justify-center space-x-6 mb-4 md:mb-0">
+                     <li><a href="#home" class="hover:text-indigo-600 dark:hover:text-indigo-400">Home</a></li>
+                     <li><a href="#services" class="hover:text-indigo-600 dark:hover:text-indigo-400">Services</a></li>
+                     <li><a href="#portfolio" class="hover:text-indigo-600 dark:hover:text-indigo-400">Portfolio</a></li>
+                     <li><a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a></li>
+                </ul>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="text-xl hover:text-indigo-600 dark:hover:text-indigo-400"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-xl hover:text-indigo-600 dark:hover:text-indigo-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-xl hover:text-indigo-600 dark:hover:text-indigo-400"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700 text-center text-slate-500 dark:text-slate-400 text-sm">
+                Copyright © 2025 YourCompany. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- footer end here -->
+
+    <button id="to-top-button" title="Go To Top"
+        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold transition-colors duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <div class="fixed top-20 right-4 z-50">
+        <button id="theme-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5">
+            <i id="theme-toggle-dark-icon" class="hidden fas fa-moon"></i>
+            <i id="theme-toggle-light-icon" class="hidden fas fa-sun"></i>
+        </button>
+    </div>
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialization
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Sticky Header Shadow on Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        });
+
+        // Portfolio Swiper
+        new Swiper('.portfolio-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+            }
+        });
+
+        // FAQ Accordion
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const icon = header.querySelector('i');
+
+            header.addEventListener('click', () => {
+                // Close other accordions
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                       const otherContent = otherItem.querySelector('.accordion-content');
+                       const otherIcon = otherItem.querySelector('.accordion-header i');
+                       otherContent.style.maxHeight = null;
+                       otherIcon.classList.remove('rotate-180');
+                    }
+                });
+                
+                // Toggle current accordion
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.classList.remove('rotate-180');
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+        
+        // Scroll-to-top Button
+        const toTopButton = document.getElementById('to-top-button');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                toTopButton.classList.remove("hidden");
+            } else {
+                toTopButton.classList.add("hidden");
+            }
+        };
+
+        toTopButton.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Dark/Light Mode Toggle
+        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+            document.documentElement.classList.add('dark');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+            document.documentElement.classList.remove('dark')
+        }
+
+        var themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function() {
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
